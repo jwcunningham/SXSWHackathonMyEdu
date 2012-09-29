@@ -1,10 +1,13 @@
-<?php defined('SYSPATH') or die('No direct script access.');
+<?php defined('SYSPATH') OR die('No Direct Script Access');
+ 
+Class Controller_login extends Controller_Template
+{
+    public $template = 'login';
+ 
+    public function action_index()
+    {
+        $this->template->message = 'This is the login page';
+    }
+}
 
-class Controller_Login extends Controller {
 
-	public function action_index()
-	{
-		$this->response->body('This is the login page.');
-	}
-
-} // End Welcome
