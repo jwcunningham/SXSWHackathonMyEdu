@@ -56,8 +56,14 @@ def mksql(pid, pdata):
                 toval = None
         mapped[tokey] = toval
     cols = ", ".join(["%s" % (v,) for v in mapped.keys()])
-    vals = ", ".join(["'%s'" % (v,) for v in mapped.values()])
-    sql = "insert into patient (%s) values (%s)" % (cols, vals)
+    vals = []
+    for v in mapped.values():
+        if v is None:
+            vals.append('null')
+        else:
+            vals.append("'%s'" % (v,))
+    vals = ", ".join(vals)
+    sql = "insert into patient (%s) values (%s);" % (cols, vals)
     return sql
 
 

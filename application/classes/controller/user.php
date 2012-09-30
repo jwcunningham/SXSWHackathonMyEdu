@@ -35,7 +35,7 @@ class Controller_User extends Controller_Template {
 				));
 				
 				// Grant user login role
-				$user->add('roles', ORM::factory('role', array('name' => 'login')));
+				$user->add('role', ORM::factory('role', array('name' => 'login')));
 				
 				// Reset values so form is not sticky
 				$_POST = array();

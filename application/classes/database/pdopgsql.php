@@ -12,6 +12,9 @@
  * program. If not, see <http://www.gnu.org/licenses/>.*/
 
 class Database_PDOPGSQL extends Kohana_Database_PDOPGSQL {
+
+    protected $_identifier = '"';
+
     public function quote_table($value) {
         return parent::quote_table($value);
     }
