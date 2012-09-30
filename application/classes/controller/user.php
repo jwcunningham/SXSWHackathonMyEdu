@@ -17,7 +17,7 @@ class Controller_User extends Controller_Template {
 		}
 	}
 
-	public function action_create() 
+		public function action_create() 
 	{
 		$this->template->content = View::factory('user/create')
 			->bind('errors', $errors)
@@ -28,14 +28,16 @@ class Controller_User extends Controller_Template {
 			try {
 		
 				// Create the user using form values
-				$user = ORM::factory('user')->create_user($this->request->post(), array(
-					'username',
-					'password',
-					'email'				
+				$user = ORM::factory('user',array(
+					'username' => $_POST['username'], 
+					'password' => $_POST['email'],
+					'email'	=> $_POST['email']			
 				));
+
+				$user->save();
 				
 				// Grant user login role
-				$user->add('role', ORM::factory('role', array('name' => 'login')));
+				$user->add('roles', ORM::factory('role', array('name' => 'login')));
 				
 				// Reset values so form is not sticky
 				$_POST = array();
