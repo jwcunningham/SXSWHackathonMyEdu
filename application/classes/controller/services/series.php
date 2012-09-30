@@ -20,14 +20,15 @@ class Controller_Services_Series extends Controller_Services {
 		foreach ($array as $k => $v) {
 			$study_keys[] = $v['study_key'];
 		}
+	} elseif (isset($_GET['series_id'])) {
+		$series = $series->where('series_id','=',$_GET['series_id'])->find_all()->as_array();
+		$study_keys = null;
 	} else {
 		return "Please include patient_id in your get string";
 	}
 
 	if (isset($study_keys)) {
 		$series = $series->where('study_key','IN', $study_keys)->limit($l)->offset($o)->find_all()->as_array();
-	} else {
-	        $series = $series->limit($l)->offset($o)->find_all()->as_array();
 	}
         $p = array();
         foreach($series as $k => $p_) {
