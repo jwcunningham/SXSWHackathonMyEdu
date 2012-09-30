@@ -5,6 +5,8 @@ class Controller_Services_Studies extends Controller_Services {
         
         if (isset($_GET['pat_key'])) {
 		$studies = $studies->where('pat_key', '=', $_GET['pat_key'])->find_all()->as_array();
+	} elseif (isset($_GET['study_id'])) {
+		$studies = $studies->where('study_id', '=', $_GET['study_id'])->find_all()->as_array();
 	} else {
         	$studies = $studies->find_all()->as_array();
 	}
