@@ -4,11 +4,11 @@ class Controller_Services_Series extends Controller_Services {
         $series = ORM::factory('series');
         $l = $this->limit;
         $o = $this->offset;
-	if (isset($_GET['study_key'])) {
-		$series = $series->where('study_key','=', $_GET['study_key'])->limit($l)->offset($o)->find_all()->as_array();
-	} else {
-	        $series = $series->->limit($l)->offset($o)->find_all()->as_array();
-	}
+        if (isset($_GET['study_key'])) {
+            $series = $series->where('study_key','=', $_GET['study_key'])->limit($l)->offset($o)->find_all()->as_array();
+        } else {
+            $series = $series->limit($l)->offset($o)->find_all()->as_array();
+        }
         $p = array();
         foreach($series as $k => $p_) {
             $s = $p_->as_array();
