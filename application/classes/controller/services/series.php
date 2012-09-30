@@ -5,6 +5,12 @@ class Controller_Services_Series extends Controller_Services {
         $l = $this->limit;
         $o = $this->offset;
 
+	$study_keys = array();
+
+	if (isset($_GET['study_key'])) {
+		$study_keys = array($_GET['study_key']);
+	}
+
 	if (isset($_GET['patient_id'])) {
 		$array = DB::select()->from('patient')
 				     ->join('study')
