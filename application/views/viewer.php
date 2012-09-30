@@ -1,9 +1,11 @@
 <html>
     <head>
-        <title>Login</title>
+        <title>Sara viewer</title>
 	<base href="/" />
     </head>
     <body>
+
+
         <p>Login!</p>
         <form action="auth/login" method='POST'>
             username: <input type="text" name="username"><br>
