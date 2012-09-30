@@ -36,7 +36,7 @@ class Database_PDOPGSQL extends Kohana_Database_PDOPGSQL {
         return $this->_connection;
     }
 
-    public function begin() {
+    public function begin($mode=null) {
         return $this->query(null, 'BEGIN', true);
     }
 
