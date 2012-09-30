@@ -44,7 +44,7 @@ class Kohana_Database_PDOPGSQL extends Kohana_Database_PDO {
         return $tables;
     }
 
-    public function list_columns($table, $like = NULL) {
+    public function list_columns($table, $like = NULL, $add_prefix=true) {
         // Find all column names
         $result = $this->query(
             Database::SELECT, 
