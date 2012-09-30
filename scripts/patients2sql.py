@@ -39,7 +39,6 @@ def mksql(pid, pdata):
         fromkey, tokey, totype, opts = col
         if fromkey == True:
             fromkey = tokey
-        #print fromkey
         fromval = pdata[fromkey]
         if totype is int:
             try:
@@ -119,12 +118,11 @@ if __name__ == "__main__":
 
             treatdt =  datetime.strptime(d["iv_tpa_start_date_and_time"], "%m/%d/%Y %H:%M")
 
-            d["lsn_triage"] = triagedt - lsndt
-            d["lsn_mri"] = mridt - lsndt
-            d["lsn_treat"] = treatdt - lsndt
+            d["lsn_triage"] = (triagedt - lsndt).total_seconds()/60
+            d["lsn_mri"] = (mridt - lsndt).total_seconds()/60
+            d["lsn_treat"] = (treatdt - lsndt).total_seconds()/60
             #print d["lsn_triage"], d["lsn_mri"], d["lsn_treat"]
-            if triagedt - lsndt > timedelta(days=0):
-                patients[pk] = d
+            patients[pk] = d
 
 
         l = inf.readline()
