@@ -83,6 +83,7 @@ if (isset($_SERVER['KOHANA_ENV']))
  */
 Kohana::init(array(
 	'base_url'   => '/',
+	'index_file' => FALSE
 ));
 
 /**
@@ -113,8 +114,4 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'login',
-		'action'     => 'index',
-	));
+Route::set('default', '(<controller>(/<action>(/<id>)))');
