@@ -53,3 +53,19 @@ create table image (
 	image_path varchar(255),
 	series_key integer  references series(series_key)
 );
+
+
+create table user_collection (
+	user_collection_key integer primary key not null default nextval('serial'),
+	label varchar(40),
+	created timestamp default current_timestamp,
+	notes text
+);
+
+create table collection_image (
+	collection_image_key integer primary key not null default nextval('serial'),
+	image_key integer references image(image_key),
+	annotation text
+);
+
+
