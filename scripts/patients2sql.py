@@ -117,10 +117,12 @@ if __name__ == "__main__":
                 triagedt = mridt
 
             treatdt =  datetime.strptime(d["iv_tpa_start_date_and_time"], "%m/%d/%Y %H:%M")
-
-            d["lsn_triage"] = (triagedt - lsndt).total_seconds()/60
-            d["lsn_mri"] = (mridt - lsndt).total_seconds()/60
-            d["lsn_treat"] = (treatdt - lsndt).total_seconds()/60
+            td = triagedt - lsndt
+            d["lsn_triage"] = (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
+            td = mridt - lsndt
+            d["lsn_mri"] = (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
+            td = treatdt - lsndt
+            d["lsn_treat"] = (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
             #print d["lsn_triage"], d["lsn_mri"], d["lsn_treat"]
             patients[pk] = d
 

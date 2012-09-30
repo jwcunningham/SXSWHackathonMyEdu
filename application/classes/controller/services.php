@@ -10,6 +10,9 @@ class Controller_Services extends Controller_REST {
 
     public $data = null;
 
+    public $limit = 20;
+    public $offset = 0;
+
     // Serialization parameters
     public $_format = 'json';
     public $_default_format = 'json';
@@ -50,6 +53,12 @@ class Controller_Services extends Controller_REST {
                 if(isset($_GET['callback']) && preg_match('/^[\w\.]+$/', $_GET['callback'])) {
                     $this->_jsonp_callback = $_GET['callback'];
                 }
+            }
+            if(isset($_GET['l'])) {
+                $this->limit = (int)$_GET['l'];
+            }
+            if(isset($_GET['o'])) {
+                $this->offset = (int)$_GET['o'];
             }
         }
         try {
